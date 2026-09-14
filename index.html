@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>מגן הנגב | פתרונות אבטחה ונעילה לבית ולעסק</title>
-<meta name="description" content="מנעולנות, מצלמות אבטחה, מערכות אזעקה וכספות — פתרון אבטחה כולל לבית ולעסק בבאר שבע והנגב. זמינים 24/7.">
+<title>מגן אבטחה | פתרונות אבטחה ונעילה לבית ולעסק</title>
+<meta name="description" content="מנעולנות, מצלמות אבטחה, מערכות אזעקה וכספות — פתרון אבטחה כולל לבית ולעסק. זמינים 24/7.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -224,8 +224,12 @@
   .gallery-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:22px;}
   .gallery-card{background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; transition:transform .2s ease, box-shadow .2s ease;}
   .gallery-card:hover{transform:translateY(-4px); box-shadow:0 16px 34px rgba(0,0,0,0.4);}
-  .gallery-media{height:170px; display:flex; align-items:center; justify-content:center; background:radial-gradient(ellipse at 30% 15%, rgba(47,209,196,0.14), transparent 60%), var(--bg); border-bottom:1px solid var(--line);}
+  .gallery-media{position:relative; height:170px; display:flex; align-items:center; justify-content:center; overflow:hidden; background:radial-gradient(ellipse at 30% 15%, rgba(47,209,196,0.14), transparent 60%), var(--bg); border-bottom:1px solid var(--line);}
   .gallery-media svg{width:56px;height:56px; stroke:var(--accent-bright); fill:none; stroke-width:1.5;}
+  .gallery-media img{width:100%;height:100%;object-fit:cover; display:block; transition:transform .35s ease;}
+  .gallery-card:hover .gallery-media img{transform:scale(1.05);}
+  .media-badge{position:absolute; bottom:10px; left:10px; width:34px;height:34px;border-radius:9px; background:rgba(11,15,20,0.72); backdrop-filter:blur(4px); display:flex;align-items:center;justify-content:center; border:1px solid rgba(255,255,255,0.14);}
+  .media-badge svg{width:16px;height:16px; stroke:var(--accent-bright); fill:none; stroke-width:2.1;}
   .gallery-caption{padding:16px 18px;}
   .gallery-caption h3{font-size:0.96rem; font-weight:700; color:var(--text); margin-bottom:4px;}
   .gallery-caption p{font-size:0.81rem; color:var(--text-dim);}
@@ -237,7 +241,9 @@
   .faq-q{width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 4px; text-align:right; font-size:0.98rem; font-weight:600; color:var(--text-dark);}
   .faq-q svg{width:18px;height:18px; stroke:var(--accent-deep); fill:none; stroke-width:2.4; flex:none; transition:transform .2s ease;}
   .faq-item.open .faq-q svg{transform:rotate(45deg);}
-  .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+  .faq-a{display:grid; grid-template-rows:0fr; transition:grid-template-rows .25s ease;}
+  .faq-a-inner{overflow:hidden;}
+  .faq-item.open .faq-a{grid-template-rows:1fr;}
   .faq-a p{padding:0 4px 20px; font-size:0.9rem; color:var(--text-muted); max-width:68ch;}
 
   /* CTA */
@@ -277,12 +283,12 @@
   <div class="navwrap">
     <div class="brand">
       <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4 L34 9 V19 C34 28 28 33.5 20 36 C12 33.5 6 28 6 19 V9 Z" fill="#1B2430" stroke="url(#gmark)" stroke-width="2"/><path d="M20 14a4.4 4.4 0 1 0 0 8.8 4.4 4.4 0 0 0 0-8.8Z" fill="none" stroke="#FF9259" stroke-width="2"/><path d="M20 19v6" stroke="#FF9259" stroke-width="2" stroke-linecap="round"/><defs><linearGradient id="gmark" x1="6" y1="4" x2="34" y2="36"><stop stop-color="#2FD1C4"/><stop offset="1" stop-color="#FF7A3D"/></linearGradient></defs></svg>
-      <span>מגן <b>הנגב</b></span>
+      <span>מגן <b>אבטחה</b></span>
     </div>
     <nav class="links">
       <button onclick="scrollToId('services')">שירותים</button>
       <button onclick="scrollToId('solutions')">פתרונות אבטחה</button>
-      <button onclick="scrollToId('area')">אזור שירות</button>
+      <button onclick="scrollToId('clients')">סוגי לקוחות</button>
       <button onclick="scrollToId('faq')">שאלות נפוצות</button>
     </nav>
     <a class="nav-cta" href="#" onclick="return false;"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>קריאת חירום</span></a>
@@ -293,7 +299,7 @@
   <div class="mobile-menu">
     <button onclick="scrollToId('services')">שירותים</button>
     <button onclick="scrollToId('solutions')">פתרונות אבטחה</button>
-    <button onclick="scrollToId('area')">אזור שירות</button>
+    <button onclick="scrollToId('clients')">סוגי לקוחות</button>
     <button onclick="scrollToId('faq')">שאלות נפוצות</button>
   </div>
 </header>
@@ -301,7 +307,7 @@
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="eyebrow"><span class="dot"></span>פתרון אבטחה כולל · באר שבע והנגב</div>
+      <div class="eyebrow"><span class="dot"></span>פתרון אבטחה כולל · לבית ולעסק</div>
       <h1>אבטחה שלמה לבית ולעסק,<br>מ<em>מנעול</em> ועד מצלמה.</h1>
       <p class="lede">מנעולנות ופריצת דלתות, התקנת מצלמות אבטחה, מערכות אזעקה וכספות — כל נושא האבטחה שלכם מטופל על ידי איש מקצוע אחד, עם זמינות מסביב לשעון.</p>
       <div class="hero-ctas">
@@ -341,7 +347,7 @@
   <div class="wrap">
     <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>זמינות 24/7 לקריאות חירום</div>
     <div><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>איש מקצוע מוסמך אחד לכל תחומי האבטחה</div>
-    <div><svg viewBox="0 0 24 24"><path d="M3 12l2-2 4 4L19 4l2 2-12 12z"/></svg>שירות בכל באר שבע והנגב</div>
+    <div><svg viewBox="0 0 24 24"><path d="M3 12l2-2 4 4L19 4l2 2-12 12z"/></svg>שירות מקצועי ואמין לכל קריאה</div>
   </div>
 </div>
 
@@ -447,26 +453,26 @@
     <div class="stats-grid">
       <div><div class="stat-num">24/7</div><div class="stat-label">זמינות לקריאות חירום</div></div>
       <div><div class="stat-num">4</div><div class="stat-label">תחומי אבטחה תחת קורת גג אחת</div></div>
-      <div><div class="stat-num">20 דק'</div><div class="stat-label">זמן הגעה ממוצע באזור העיר</div></div>
+      <div><div class="stat-num">20 דק'</div><div class="stat-label">זמן הגעה ממוצע לקריאה</div></div>
       <div><div class="stat-num">100%</div><div class="stat-label">מחיר מוסכם מראש, בלי הפתעות</div></div>
     </div>
   </div>
 </section>
 
-<section class="section" id="area">
+<section class="section" id="clients">
   <div class="wrap">
     <div class="area-wrap">
       <div>
-        <span class="section-tag">אזור שירות</span>
-        <h2>פעילים בכל באר שבע והנגב</h2>
-        <p class="section-note" style="max-width:44ch;margin-top:10px;">קריאות חירום ותיאומים מראש בכל שכונות העיר וביישובי הסביבה.</p>
+        <span class="section-tag">התאמה אישית</span>
+        <h2>פתרון מותאם לכל סוג נכס</h2>
+        <p class="section-note" style="max-width:44ch;margin-top:10px;">בין אם מדובר בדירה פרטית, משרד קטן או עסק עם כמה סניפים — הפתרון נבנה בדיוק לפי הצורך.</p>
         <div class="area-chips">
-          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>מרכז העיר</div>
-          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>שכונות רמות</div>
-          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>נאות לון</div>
-          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>נווה זאב</div>
-          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>אזור התעשייה הישן והחדש</div>
-          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>יישובי הסביבה</div>
+          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>בית פרטי</div>
+          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>דירה להשכרה</div>
+          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>משרד</div>
+          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>חנות ועסק קטן</div>
+          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>מחסן ואחסנה</div>
+          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>מבנה ציבורי</div>
         </div>
       </div>
       <div class="area-visual">
@@ -528,11 +534,11 @@
     </div>
     <div class="gallery-grid">
       <div class="gallery-card"><div class="gallery-media"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 12v8M9 17h6"/></svg></div><div class="gallery-caption"><h3>פריצת דלת פלדלת</h3><p>שחזור כניסה ללא נזק, קריאת חירום</p></div></div>
-      <div class="gallery-card"><div class="gallery-media"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><div class="gallery-caption"><h3>החלפת מנעול רב בריח</h3><p>שדרוג אבטחה לדלת כניסה</p></div></div>
-      <div class="gallery-card"><div class="gallery-media"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 9l4-2.5v11L17 15"/></svg></div><div class="gallery-caption"><h3>מערך מצלמות אבטחה</h3><p>התקנה וכיוונון לבית ולעסק</p></div></div>
-      <div class="gallery-card"><div class="gallery-media"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg></div><div class="gallery-caption"><h3>מערכת אזעקה וחיישנים</h3><p>הגנה מלאה מסביב לשעון</p></div></div>
-      <div class="gallery-card"><div class="gallery-media"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M9 4v3M15 4v3"/></svg></div><div class="gallery-caption"><h3>כספות לבית ולעסק</h3><p>ייעוץ, התקנה ופתיחת כספת נעולה</p></div></div>
-      <div class="gallery-card"><div class="gallery-media"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div><div class="gallery-caption"><h3>שכפול מפתחות</h3><p>שכפול מהיר לכל סוגי המפתחות</p></div></div>
+      <div class="gallery-card"><div class="gallery-media"><img src="https://images.pexels.com/photos/279810/pexels-photo-279810.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="מנעול דיגיטלי מותקן על דלת כניסה" loading="lazy"><div class="media-badge"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div></div><div class="gallery-caption"><h3>החלפת מנעול רב בריח</h3><p>שדרוג אבטחה לדלת כניסה</p></div></div>
+      <div class="gallery-card"><div class="gallery-media"><img src="https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="שתי מצלמות אבטחה מותקנות על קיר" loading="lazy"><div class="media-badge"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 9l4-2.5v11L17 15"/></svg></div></div><div class="gallery-caption"><h3>מערך מצלמות אבטחה</h3><p>התקנה וכיוונון לבית ולעסק</p></div></div>
+      <div class="gallery-card"><div class="gallery-media"><img src="https://images.pexels.com/photos/30170004/pexels-photo-30170004.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="שליטה חכמה במערכת אבטחה מהטלפון הנייד" loading="lazy"><div class="media-badge"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg></div></div><div class="gallery-caption"><h3>מערכת אזעקה וחיישנים</h3><p>הגנה מלאה מסביב לשעון</p></div></div>
+      <div class="gallery-card"><div class="gallery-media"><img src="https://images.pexels.com/photos/32596180/pexels-photo-32596180.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="חנות עם מגוון כספות לבית ולעסק" loading="lazy"><div class="media-badge"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M9 4v3M15 4v3"/></svg></div></div><div class="gallery-caption"><h3>כספות לבית ולעסק</h3><p>ייעוץ, התקנה ופתיחת כספת נעולה</p></div></div>
+      <div class="gallery-card"><div class="gallery-media"><img src="https://images.pexels.com/photos/35578808/pexels-photo-35578808.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="מנעולן עובד בסדנת שכפול מפתחות" loading="lazy"><div class="media-badge"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div></div><div class="gallery-caption"><h3>שכפול מפתחות</h3><p>שכפול מהיר לכל סוגי המפתחות</p></div></div>
     </div>
   </div>
 </section>
@@ -548,23 +554,23 @@
     <div class="faq-list">
       <div class="faq-item open">
         <button class="faq-q" onclick="toggleFaq(this)">האם אתם זמינים גם בלילה ובסופי שבוע?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
-        <div class="faq-a"><p>כן, המוקד זמין 24/7 לקריאות חירום כמו ננעלת בחוץ או תקלת נעילה דחופה, כולל לילות, שבתות וחגים.</p></div>
+        <div class="faq-a"><div class="faq-a-inner"><p>כן, המוקד זמין 24/7 לקריאות חירום כמו ננעלת בחוץ או תקלת נעילה דחופה, כולל לילות, שבתות וחגים.</p></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">מעבר למנעולנות, אילו שירותי אבטחה אתם מספקים?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
-        <div class="faq-a"><p>התקנת מצלמות אבטחה עם צפייה מהנייד, מערכות אזעקה וחיישנים, וכן ייעוץ, מכירה ופתיחה של כספות לבית ולעסק.</p></div>
+        <div class="faq-a"><div class="faq-a-inner"><p>התקנת מצלמות אבטחה עם צפייה מהנייד, מערכות אזעקה וחיישנים, וכן ייעוץ, מכירה ופתיחה של כספות לבית ולעסק.</p></div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">איך נקבע המחיר הסופי?</button>
-        <div class="faq-a"><p>מקבלים הערכת מחיר ראשונית בטלפון, והמחיר הסופי מוסכם איתכם במקום לפני תחילת העבודה — בלי הפתעות.</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)">איך נקבע המחיר הסופי?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>מקבלים הערכת מחיר ראשונית בטלפון, והמחיר הסופי מוסכם איתכם במקום לפני תחילת העבודה — בלי הפתעות.</p></div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">האם יש אחריות על ההתקנות?</button>
-        <div class="faq-a"><p>כל עבודה מגיעה עם אחריות בכתב, הן על מנעולים והחלפות והן על התקנות מצלמות ואזעקות.</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)">האם יש אחריות על ההתקנות?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>כל עבודה מגיעה עם אחריות בכתב, הן על מנעולים והחלפות והן על התקנות מצלמות ואזעקות.</p></div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">אתם עובדים גם עם עסקים וחנויות?</button>
-        <div class="faq-a"><p>בהחלט — ממנעולים ובקרת כניסה ועד מערך מצלמות וכספת עסקית, כולל התאמה לצרכים הספציפיים של העסק.</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)">אתם עובדים גם עם עסקים וחנויות?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>בהחלט — ממנעולים ובקרת כניסה ועד מערך מצלמות וכספת עסקית, כולל התאמה לצרכים הספציפיים של העסק.</p></div></div>
       </div>
     </div>
   </div>
@@ -587,18 +593,18 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4 L34 9 V19 C34 28 28 33.5 20 36 C12 33.5 6 28 6 19 V9 Z" fill="#161D27" stroke="url(#gmark2)" stroke-width="2"/><path d="M20 14a4.4 4.4 0 1 0 0 8.8 4.4 4.4 0 0 0 0-8.8Z" fill="none" stroke="#FF9259" stroke-width="2"/><path d="M20 19v6" stroke="#FF9259" stroke-width="2" stroke-linecap="round"/><defs><linearGradient id="gmark2" x1="6" y1="4" x2="34" y2="36"><stop stop-color="#2FD1C4"/><stop offset="1" stop-color="#FF7A3D"/></linearGradient></defs></svg>
-        מגן הנגב
+        מגן אבטחה
       </div>
       <nav class="footer-links">
         <button onclick="scrollToId('services')">שירותים</button>
         <button onclick="scrollToId('solutions')">פתרונות אבטחה</button>
-        <button onclick="scrollToId('area')">אזור שירות</button>
+        <button onclick="scrollToId('clients')">סוגי לקוחות</button>
         <button onclick="scrollToId('faq')">שאלות נפוצות</button>
       </nav>
     </div>
     <div class="footer-bottom">
-      <span>© מגן הנגב — פתרונות אבטחה ונעילה לבית ולעסק</span>
-      <span>אזור שירות: באר שבע והנגב</span>
+      <span>© מגן אבטחה — פתרונות אבטחה ונעילה לבית ולעסק</span>
+      <span>זמינים 24/7 לקריאות חירום</span>
     </div>
   </div>
 </footer>
@@ -618,18 +624,10 @@
     var wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(function(el){
       el.classList.remove('open');
-      el.querySelector('.faq-a').style.maxHeight = null;
     });
-    if(!wasOpen){
-      item.classList.add('open');
-      var a = item.querySelector('.faq-a');
-      a.style.maxHeight = a.scrollHeight + 'px';
-    }
+    if(!wasOpen){ item.classList.add('open'); }
   }
   document.addEventListener('DOMContentLoaded', function(){
-    var openItem = document.querySelector('.faq-item.open .faq-a');
-    if(openItem){ openItem.style.maxHeight = openItem.scrollHeight + 'px'; }
-
     var tabBtns = document.querySelectorAll('.tab-btn');
     tabBtns.forEach(function(btn){
       btn.addEventListener('click', function(){
