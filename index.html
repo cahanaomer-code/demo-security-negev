@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מגן הנגב | פתרונות אבטחה ונעילה לבית ולעסק</title>
+<meta name="description" content="מנעולנות, מצלמות אבטחה, מערכות אזעקה וכספות — פתרון אבטחה כולל לבית ולעסק בבאר שבע והנגב. זמינים 24/7.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0F14;
+    --bg-soft:#121821;
+    --card:#161D27;
+    --card-hi:#1B2430;
+    --line:#242D3A;
+    --paper:#F4F6F8;
+    --paper-dim:#E7EBEF;
+    --text:#EDF1F5;
+    --text-dim:#93A1B0;
+    --text-dark:#161B22;
+    --text-muted:#5B6773;
+    --accent:#FF7A3D;
+    --accent-bright:#FF9259;
+    --accent-deep:#E85F23;
+    --tech:#2FD1C4;
+    --tech-dim:#1C8F86;
+    --warn-bg:rgba(255,122,61,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--text-dark);
+    font-family:'Heebo',sans-serif;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Rubik',sans-serif;
+    font-weight:700;
+    line-height:1.18;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{display:block;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 32px;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  button{font:inherit;border:none;background:none;cursor:pointer;color:inherit;}
+  ul{list-style:none;}
+
+  /* UTILITY BAR */
+  .util-bar{background:var(--accent); color:#1A0F08; font-size:0.78rem; font-weight:600; text-align:center; padding:8px 16px;}
+  .util-bar strong{font-weight:800;}
+
+  /* HEADER */
+  header{position:sticky; top:0; z-index:70; background:rgba(11,15,20,0.92); backdrop-filter:blur(8px); border-bottom:1px solid rgba(255,255,255,0.06);}
+  .navwrap{max-width:1160px;margin:0 auto;padding:16px 32px; display:flex;align-items:center;justify-content:space-between; gap:18px;}
+  .brand{display:flex;align-items:center;gap:10px; color:var(--text); font-family:'Rubik',sans-serif; font-weight:700; font-size:1.15rem;}
+  .brand .mark{width:34px;height:34px;flex:none;}
+  .brand b{color:var(--accent-bright);}
+  nav.links{display:flex;gap:28px;font-size:0.92rem;color:var(--text-dim);}
+  nav.links button:hover{color:var(--text);}
+  .nav-cta{background:var(--accent); color:#1A0F08; padding:11px 22px; border-radius:8px; font-weight:700; font-size:0.85rem; display:inline-flex; align-items:center; gap:8px; transition:background .15s ease, transform .15s ease;}
+  .nav-cta:hover{background:var(--accent-bright); transform:translateY(-1px);}
+  .nav-cta svg{width:16px;height:16px;stroke:#1A0F08;fill:none;stroke-width:2.2;}
+  .burger{display:none; width:40px;height:40px; border-radius:8px; align-items:center; justify-content:center; color:var(--text);}
+  .burger svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;}
+  .mobile-menu{display:none; flex-direction:column; gap:2px; background:var(--bg-soft); border-top:1px solid rgba(255,255,255,0.06); padding:10px 32px 18px;}
+  .mobile-menu button{text-align:right; padding:12px 4px; color:var(--text-dim); font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.05);}
+  .mobile-menu button:hover{color:var(--text);}
+  @media(max-width:880px){
+    nav.links{display:none;}
+    .nav-cta span{display:none;}
+    .nav-cta{padding:11px; border-radius:50%;}
+    .burger{display:flex;}
+    header.open .mobile-menu{display:flex;}
+  }
+
+  /* HERO */
+  .hero{
+    background:
+      radial-gradient(ellipse 760px 520px at 82% -8%, rgba(47,209,196,0.14), transparent 60%),
+      radial-gradient(ellipse 640px 480px at 8% 8%, rgba(255,122,61,0.16), transparent 55%),
+      linear-gradient(180deg, var(--bg), var(--bg-soft) 90%);
+    color:var(--text); padding:64px 0 0; position:relative; overflow:hidden;
+  }
+  .hero::after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 800px 500px at 30% 10%, black, transparent 75%);
+  }
+  .hero-inner{max-width:1160px;margin:0 auto;padding:0 32px 56px; display:grid; grid-template-columns:1.05fr 0.95fr; gap:48px; align-items:center; position:relative; z-index:1;}
+  .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:0.78rem; font-weight:600; letter-spacing:0.02em; color:var(--accent-bright); background:rgba(255,122,61,0.12); border:1px solid rgba(255,122,61,0.28); padding:7px 14px 7px 10px; border-radius:100px; margin-bottom:22px;}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%; background:var(--tech); box-shadow:0 0 0 4px rgba(47,209,196,0.22); flex:none;}
+  .hero h1{font-size:clamp(2.15rem,4.3vw,3.25rem); margin-bottom:20px; letter-spacing:-0.01em;}
+  .hero h1 em{font-style:normal; color:var(--accent-bright);}
+  .hero p.lede{font-size:1.05rem; color:var(--text-dim); max-width:46ch; margin-bottom:30px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:32px;}
+  .btn{display:inline-flex;align-items:center;gap:9px; padding:15px 26px; border-radius:9px; font-weight:700; font-size:0.95rem; transition:transform .15s ease, background .15s ease, box-shadow .15s ease, border-color .15s ease;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn svg{width:18px;height:18px;flex:none;}
+  .btn-accent{background:linear-gradient(180deg, var(--accent-bright), var(--accent)); color:#1A0F08; box-shadow:0 10px 24px rgba(255,122,61,0.28);}
+  .btn-accent svg{stroke:#1A0F08;fill:none;stroke-width:2.2;}
+  .btn-accent:hover{box-shadow:0 12px 28px rgba(255,122,61,0.4);}
+  .btn-ghost{border:1px solid rgba(237,241,245,0.22); color:var(--text);}
+  .btn-ghost svg{stroke:var(--text);fill:none;stroke-width:2.2;}
+  .btn-ghost:hover{border-color:rgba(237,241,245,0.5); background:rgba(237,241,245,0.05);}
+  .hero-trust{display:flex; gap:22px; flex-wrap:wrap; font-size:0.84rem; color:var(--text-dim);}
+  .hero-trust li{display:flex; align-items:center; gap:7px;}
+  .hero-trust svg{width:16px;height:16px; stroke:var(--tech); fill:none; stroke-width:2.4; flex:none;}
+
+  /* HERO VISUAL: security shield panel */
+  .shield-panel{position:relative; display:flex; align-items:center; justify-content:center;}
+  .shield-card{
+    width:100%; max-width:400px; background:var(--card); border:1px solid var(--line); border-radius:22px;
+    padding:34px 28px; box-shadow:0 30px 70px rgba(0,0,0,0.45); position:relative; overflow:hidden;
+  }
+  .shield-card::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at 30% 0%, rgba(47,209,196,0.14), transparent 55%);}
+  .shield-rig{display:flex; justify-content:center; margin-bottom:6px;}
+  .shield-rig svg{width:170px;height:170px;}
+  .pulse-ring{fill:none; stroke:var(--tech); stroke-width:1.4; transform-origin:100px 100px; animation:pulse 2.6s ease-out infinite;}
+  .pulse-ring.d2{animation-delay:0.9s;}
+  @keyframes pulse{
+    0%{opacity:0.7; transform:scale(0.7);}
+    80%{opacity:0;}
+    100%{opacity:0; transform:scale(1.35);}
+  }
+  .shield-status{display:flex; align-items:center; justify-content:center; gap:8px; font-size:0.82rem; font-weight:700; color:var(--tech); margin-bottom:22px; position:relative;}
+  .shield-status .live-dot{width:8px;height:8px;border-radius:50%; background:var(--tech); box-shadow:0 0 0 4px rgba(47,209,196,0.22); animation:blink 1.8s ease-in-out infinite;}
+  @keyframes blink{0%,100%{opacity:1;} 50%{opacity:0.35;}}
+  .shield-rows{display:flex; flex-direction:column; gap:10px; position:relative;}
+  .shield-row{display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:11px 13px;}
+  .shield-row svg{width:18px;height:18px; stroke:var(--accent-bright); fill:none; stroke-width:2.1; flex:none;}
+  .shield-row span{font-size:0.86rem; color:var(--text);}
+  .shield-row small{display:block; font-size:0.74rem; color:var(--text-dim); margin-top:1px;}
+  @media(prefers-reduced-motion:reduce){ .pulse-ring, .live-dot{animation:none;} }
+  @media(max-width:900px){
+    .hero-inner{grid-template-columns:1fr; text-align:right;}
+    .shield-panel{order:-1; max-width:340px; margin:0 auto 8px;}
+  }
+
+  /* TRUST STRIP */
+  .strip{background:var(--bg-soft); border-top:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.05);}
+  .strip .wrap{display:flex; justify-content:center; flex-wrap:wrap; gap:38px; padding:20px 32px; color:var(--text-dim); font-size:0.88rem; text-align:center;}
+  .strip .wrap > div{display:flex; align-items:center; gap:8px;}
+  .strip .wrap svg{width:16px;height:16px; stroke:var(--tech); fill:none; stroke-width:2.4;}
+
+  /* GENERIC SECTION */
+  .section{padding:88px 0;}
+  .section-head{display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:44px; gap:20px; flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(1.6rem,3vw,2.15rem); color:var(--text-dark);}
+  .section-tag{font-size:0.76rem; letter-spacing:0.06em; color:var(--accent-deep); font-weight:700; margin-bottom:9px; display:inline-block; background:rgba(255,122,61,0.1); padding:5px 12px; border-radius:100px;}
+  .section-note{color:var(--text-muted); max-width:36ch; font-size:0.94rem;}
+  .on-dark .section-head h2{color:var(--text);}
+  .on-dark .section-note{color:var(--text-dim);}
+  .on-dark .section-tag{background:rgba(47,209,196,0.12); color:var(--tech);}
+
+  /* SERVICES GRID */
+  .services-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;}
+  .service-card{background:#fff; border:1px solid var(--paper-dim); border-radius:16px; padding:26px 24px; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;}
+  .service-card:hover{transform:translateY(-4px); box-shadow:0 20px 40px rgba(22,27,34,0.08); border-color:transparent;}
+  .service-icon{width:48px;height:48px; display:flex;align-items:center;justify-content:center; background:linear-gradient(150deg, var(--accent), var(--accent-deep)); border-radius:12px; margin-bottom:16px;}
+  .service-icon svg{width:22px;height:22px;stroke:#fff; fill:none; stroke-width:1.9;}
+  .service-card.tech .service-icon{background:linear-gradient(150deg, var(--tech), var(--tech-dim));}
+  .service-card h3{font-size:1.04rem; font-weight:700; color:var(--text-dark); margin-bottom:6px;}
+  .service-card .desc{color:var(--text-muted); font-size:0.87rem; margin-bottom:16px; min-height:42px;}
+  .service-price{font-size:0.85rem; color:var(--accent-deep); background:var(--warn-bg); border-radius:100px; padding:6px 14px; display:inline-block; font-weight:700;}
+  .service-card.tech .service-price{color:var(--tech-dim); background:rgba(47,209,196,0.1);}
+  @media(max-width:880px){ .services-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:600px){ .services-grid{grid-template-columns:1fr;} }
+  .price-note{margin-top:22px; font-size:0.82rem; color:var(--text-muted);}
+
+  /* SOLUTIONS TABS */
+  .tabs{background:var(--bg); color:var(--text);}
+  .tab-switch{display:inline-flex; background:var(--card); border:1px solid var(--line); border-radius:100px; padding:5px; margin-bottom:36px; gap:4px;}
+  .tab-btn{padding:11px 24px; border-radius:100px; font-size:0.9rem; font-weight:700; color:var(--text-dim); transition:background .15s ease, color .15s ease;}
+  .tab-btn.active{background:linear-gradient(180deg, var(--accent-bright), var(--accent)); color:#1A0F08;}
+  .tab-panels{position:relative;}
+  .tab-panel{display:none; grid-template-columns:repeat(2, 1fr); gap:16px;}
+  .tab-panel.active{display:grid;}
+  .tab-item{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; display:flex; gap:14px; align-items:flex-start;}
+  .tab-item svg{width:22px;height:22px; stroke:var(--tech); fill:none; stroke-width:2; flex:none; margin-top:2px;}
+  .tab-item h4{font-size:0.96rem; font-weight:700; margin-bottom:4px; color:var(--text);}
+  .tab-item p{font-size:0.84rem; color:var(--text-dim);}
+  @media(max-width:700px){ .tab-panel{grid-template-columns:1fr;} }
+
+  /* PROCESS */
+  .process-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; counter-reset:step;}
+  .process-card{position:relative; background:#fff; border:1px solid var(--paper-dim); border-radius:16px; padding:30px 24px 26px;}
+  .process-num{width:38px;height:38px; border-radius:10px; background:var(--text-dark); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Rubik',sans-serif; font-weight:700; margin-bottom:18px;}
+  .process-card h3{font-size:1.02rem; margin-bottom:8px; color:var(--text-dark);}
+  .process-card p{font-size:0.88rem; color:var(--text-muted);}
+  @media(max-width:800px){ .process-grid{grid-template-columns:1fr;} }
+
+  /* STATS */
+  .stats-section{background:var(--bg); color:var(--text); padding:60px 0;}
+  .stats-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:24px; text-align:center;}
+  .stat-num{font-family:'Rubik',sans-serif; font-weight:800; font-size:clamp(1.9rem,3.4vw,2.5rem); color:var(--accent-bright);}
+  .stat-label{margin-top:6px; font-size:0.85rem; color:var(--text-dim);}
+  @media(max-width:700px){ .stats-grid{grid-template-columns:repeat(2, 1fr); row-gap:34px;} }
+
+  /* SERVICE AREA */
+  .area-wrap{display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center;}
+  .area-chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;}
+  .area-chip{display:inline-flex; align-items:center; gap:7px; background:#fff; border:1px solid var(--paper-dim); border-radius:100px; padding:9px 16px; font-size:0.86rem; color:var(--text-dark);}
+  .area-chip svg{width:14px;height:14px; stroke:var(--accent-deep); fill:none; stroke-width:2.4;}
+  .area-visual{background:var(--text-dark); border-radius:20px; padding:34px; position:relative; overflow:hidden; min-height:280px; display:flex; align-items:center; justify-content:center;}
+  .area-visual::before{content:""; position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px); background-size:22px 22px;}
+  .area-visual svg{width:100%; max-width:260px; position:relative; z-index:1;}
+  @media(max-width:860px){ .area-wrap{grid-template-columns:1fr;} }
+
+  /* TESTIMONIALS */
+  .testimonials-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(270px, 1fr)); gap:22px;}
+  .testimonial-card{background:#fff; border:1px solid var(--paper-dim); border-radius:16px; padding:26px;}
+  .stars{color:var(--accent-deep); font-size:0.95rem; letter-spacing:2px; margin-bottom:12px;}
+  .testimonial-quote{font-size:0.92rem; color:var(--text-dark); line-height:1.7; margin-bottom:16px;}
+  .testimonial-author{font-size:0.82rem; color:var(--text-muted); font-weight:600; display:flex; align-items:center; gap:8px;}
+  .testimonial-tag{font-size:0.72rem; background:var(--paper-dim); color:var(--text-muted); padding:3px 10px; border-radius:100px; font-weight:600;}
+
+  /* GALLERY */
+  .gallery-section{background:var(--bg-soft); color:var(--text);}
+  .gallery-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:22px;}
+  .gallery-card{background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; transition:transform .2s ease, box-shadow .2s ease;}
+  .gallery-card:hover{transform:translateY(-4px); box-shadow:0 16px 34px rgba(0,0,0,0.4);}
+  .gallery-media{height:170px; display:flex; align-items:center; justify-content:center; background:radial-gradient(ellipse at 30% 15%, rgba(47,209,196,0.14), transparent 60%), var(--bg); border-bottom:1px solid var(--line);}
+  .gallery-media svg{width:56px;height:56px; stroke:var(--accent-bright); fill:none; stroke-width:1.5;}
+  .gallery-caption{padding:16px 18px;}
+  .gallery-caption h3{font-size:0.96rem; font-weight:700; color:var(--text); margin-bottom:4px;}
+  .gallery-caption p{font-size:0.81rem; color:var(--text-dim);}
+  @media(max-width:640px){ .gallery-media{height:140px;} .gallery-media svg{width:44px;height:44px;} }
+
+  /* FAQ */
+  .faq-list{max-width:800px;}
+  .faq-item{border-bottom:1px solid var(--paper-dim);}
+  .faq-q{width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 4px; text-align:right; font-size:0.98rem; font-weight:600; color:var(--text-dark);}
+  .faq-q svg{width:18px;height:18px; stroke:var(--accent-deep); fill:none; stroke-width:2.4; flex:none; transition:transform .2s ease;}
+  .faq-item.open .faq-q svg{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+  .faq-a p{padding:0 4px 20px; font-size:0.9rem; color:var(--text-muted); max-width:68ch;}
+
+  /* CTA */
+  .cta{
+    background:radial-gradient(ellipse 700px 420px at 50% 0%, rgba(255,122,61,0.16), transparent 65%), var(--bg);
+    color:var(--text); text-align:center; padding:100px 0;
+  }
+  .cta h2{font-size:clamp(1.8rem,4vw,2.5rem); color:var(--text); margin-bottom:16px;}
+  .cta p{color:var(--text-dim); max-width:46ch; margin:0 auto 30px; font-size:1rem;}
+  .cta .hero-ctas{justify-content:center;}
+  .cta-note{margin-top:24px;font-size:0.78rem;color:var(--text-dim);}
+
+  footer{background:var(--bg); color:var(--text-dim); border-top:1px solid rgba(255,255,255,0.08); padding:40px 0 26px;}
+  .footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:28px; margin-bottom:28px;}
+  .footer-brand{display:flex;align-items:center;gap:10px; color:var(--text); font-family:'Rubik',sans-serif; font-weight:700; font-size:1.05rem;}
+  .footer-brand .mark{width:28px;height:28px;}
+  .footer-links{display:flex; gap:26px; font-size:0.86rem; flex-wrap:wrap;}
+  .footer-links button:hover{color:var(--text);}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.08); padding-top:20px; font-size:0.78rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  /* floating contact buttons */
+  .float-contacts{position:fixed; bottom:22px; left:22px; z-index:60; display:flex; flex-direction:column; gap:12px;}
+  .float-btn{width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 22px rgba(0,0,0,0.35); cursor:default; transition:transform .15s ease;}
+  .float-btn:hover{transform:scale(1.06);}
+  .float-btn svg{width:25px;height:25px;}
+  .float-btn.call{background:linear-gradient(180deg, var(--accent-bright), var(--accent));}
+  .float-btn.call svg{stroke:#1A0F08; fill:none; stroke-width:2.1;}
+  .float-btn.wa{background:#25D366;}
+  .float-btn.wa svg{fill:#06210f;}
+</style>
+</head>
+<body>
+
+<div class="util-bar">🛡️ מוקד חירום זמין <strong>24/7</strong> — פריצות דלתות, תקלות אבטחה ומנעולים בכל שעה</div>
+
+<header id="site-header">
+  <div class="navwrap">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4 L34 9 V19 C34 28 28 33.5 20 36 C12 33.5 6 28 6 19 V9 Z" fill="#1B2430" stroke="url(#gmark)" stroke-width="2"/><path d="M20 14a4.4 4.4 0 1 0 0 8.8 4.4 4.4 0 0 0 0-8.8Z" fill="none" stroke="#FF9259" stroke-width="2"/><path d="M20 19v6" stroke="#FF9259" stroke-width="2" stroke-linecap="round"/><defs><linearGradient id="gmark" x1="6" y1="4" x2="34" y2="36"><stop stop-color="#2FD1C4"/><stop offset="1" stop-color="#FF7A3D"/></linearGradient></defs></svg>
+      <span>מגן <b>הנגב</b></span>
+    </div>
+    <nav class="links">
+      <button onclick="scrollToId('services')">שירותים</button>
+      <button onclick="scrollToId('solutions')">פתרונות אבטחה</button>
+      <button onclick="scrollToId('area')">אזור שירות</button>
+      <button onclick="scrollToId('faq')">שאלות נפוצות</button>
+    </nav>
+    <a class="nav-cta" href="#" onclick="return false;"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>קריאת חירום</span></a>
+    <button class="burger" aria-label="תפריט" onclick="document.getElementById('site-header').classList.toggle('open')">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu">
+    <button onclick="scrollToId('services')">שירותים</button>
+    <button onclick="scrollToId('solutions')">פתרונות אבטחה</button>
+    <button onclick="scrollToId('area')">אזור שירות</button>
+    <button onclick="scrollToId('faq')">שאלות נפוצות</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>פתרון אבטחה כולל · באר שבע והנגב</div>
+      <h1>אבטחה שלמה לבית ולעסק,<br>מ<em>מנעול</em> ועד מצלמה.</h1>
+      <p class="lede">מנעולנות ופריצת דלתות, התקנת מצלמות אבטחה, מערכות אזעקה וכספות — כל נושא האבטחה שלכם מטופל על ידי איש מקצוע אחד, עם זמינות מסביב לשעון.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-accent" href="#" onclick="return false;"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>קריאת חירום עכשיו</a>
+        <button class="btn btn-ghost" onclick="scrollToId('services')"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>לצפייה במחירון</button>
+      </div>
+      <ul class="hero-trust">
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>אחריות בכתב על כל עבודה</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>ציוד ואבחון מקצועי</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>מחיר סופי לפני התחלת עבודה</li>
+      </ul>
+    </div>
+    <div class="shield-panel">
+      <div class="shield-card">
+        <div class="shield-status"><span class="live-dot"></span>מוקד פעיל עכשיו</div>
+        <div class="shield-rig">
+          <svg viewBox="0 0 200 200" aria-hidden="true">
+            <circle class="pulse-ring" cx="100" cy="100" r="70"/>
+            <circle class="pulse-ring d2" cx="100" cy="100" r="70"/>
+            <path d="M100 26 L162 48 V96 C162 138 136 164 100 178 C64 164 38 138 38 96 V48 Z" fill="#141B25" stroke="#2FD1C4" stroke-width="2.2"/>
+            <path d="M100 26 L162 48 V96 C162 138 136 164 100 178" fill="none" stroke="#FF9259" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="6 6" opacity="0.55"/>
+            <circle cx="100" cy="92" r="18" fill="none" stroke="#FF9259" stroke-width="3"/>
+            <rect x="96" y="108" width="8" height="26" rx="3" fill="#FF9259"/>
+          </svg>
+        </div>
+        <div class="shield-rows">
+          <div class="shield-row"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>מנעולים ופריצת דלתות<small>מענה מיידי, שקט ובלי נזק מיותר</small></span></div>
+          <div class="shield-row"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 9l4-2.5v11L17 15"/></svg><span>מצלמות אבטחה<small>התקנה, כיוון וצפייה מהנייד</small></span></div>
+          <div class="shield-row"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg><span>מערכות אזעקה וחיישנים<small>הגנה על הבית או העסק 24/7</small></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>זמינות 24/7 לקריאות חירום</div>
+    <div><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>איש מקצוע מוסמך אחד לכל תחומי האבטחה</div>
+    <div><svg viewBox="0 0 24 24"><path d="M3 12l2-2 4 4L19 4l2 2-12 12z"/></svg>שירות בכל באר שבע והנגב</div>
+  </div>
+</div>
+
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-tag">מחירון שירותים</span>
+        <h2>כל שירותי האבטחה במקום אחד</h2>
+      </div>
+      <p class="section-note">מחיר סופי נקבע בטלפון בהתאם לסוג העבודה והציוד הנדרש.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 12v8M9 17h6"/></svg></div>
+        <h3>פריצת דלת / קריאת חירום</h3>
+        <div class="desc">פתיחה מקצועית ללא נזק מיותר, כולל תעריף לילה.</div>
+        <div class="service-price">₪250–400</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+        <h3>החלפת מנעול רב בריח</h3>
+        <div class="desc">שדרוג לדלת פלדלת עם מנגנון אבטחה מוגבר.</div>
+        <div class="service-price">₪450–950</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div>
+        <h3>שכפול מפתחות</h3>
+        <div class="desc">שכפול מהיר לכל סוגי המפתחות והריהוט.</div>
+        <div class="service-price">₪30–90</div>
+      </div>
+      <div class="service-card tech">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 9l4-2.5v11L17 15"/></svg></div>
+        <h3>התקנת מצלמות אבטחה</h3>
+        <div class="desc">מערכת מצלמות עם צפייה מרחוק מהנייד, לבית ולעסק.</div>
+        <div class="service-price">מ-₪1,200</div>
+      </div>
+      <div class="service-card tech">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>מערכות אזעקה וחיישנים</h3>
+        <div class="desc">התקנה, כיוון וליווי שוטף למערכת אזעקה חכמה.</div>
+        <div class="service-price">מ-₪900</div>
+      </div>
+      <div class="service-card tech">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M9 4v3M15 4v3"/></svg></div>
+        <h3>כספות — מכירה ופתיחה</h3>
+        <div class="desc">ייעוץ והתקנת כספת, ופתיחת כספת נעולה בשירות חירום.</div>
+        <div class="service-price">לפי דגם</div>
+      </div>
+    </div>
+    <div class="price-note">* המחירים כוללים מע"מ ועשויים להשתנות בהתאם למורכבות העבודה, לדגם ולזמינות (יום / לילה).</div>
+  </div>
+</section>
+
+<section class="section tabs" id="solutions">
+  <div class="wrap on-dark">
+    <div class="section-head">
+      <div>
+        <span class="section-tag">פתרון אבטחה מותאם</span>
+        <h2>לבית או לעסק — פתרון שמתאים בדיוק לכם</h2>
+      </div>
+      <p class="section-note">אותו איש מקצוע, פתרון אחר בהתאם לצרכים.</p>
+    </div>
+    <div class="tab-switch" role="tablist">
+      <button class="tab-btn active" data-tab="home" role="tab" aria-selected="true">לבית</button>
+      <button class="tab-btn" data-tab="biz" role="tab" aria-selected="false">לעסק</button>
+    </div>
+    <div class="tab-panels">
+      <div class="tab-panel active" data-panel="home">
+        <div class="tab-item"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><div><h4>שדרוג נעילה לדלת הכניסה</h4><p>מנעול רב בריח, עינית דיגיטלית ובריח בטיחות.</p></div></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 9l4-2.5v11L17 15"/></svg><div><h4>מצלמה בכניסה לבית</h4><p>התראה לנייד וצפייה חיה בכל רגע.</p></div></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg><div><h4>אזעקה ביתית בסיסית</h4><p>חיישני דלתות וחלונות עם התרעה מיידית.</p></div></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 12v8M9 17h6"/></svg><div><h4>קריאת חירום ננעלתם בחוץ</h4><p>מענה מהיר בכל שעה, גם בסופי שבוע וחגים.</p></div></div>
+      </div>
+      <div class="tab-panel" data-panel="biz">
+        <div class="tab-item"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 9l4-2.5v11L17 15"/></svg><div><h4>מערך מצלמות לעסק</h4><p>כיסוי כניסה, קופה ומחסן עם גיבוי בענן.</p></div></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M9 4v3M15 4v3"/></svg><div><h4>כספת עסקית</h4><p>ייעוץ להתאמת כספת לפי היקף המזומן והציוד.</p></div></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg><div><h4>בקרת כניסה ומפתחות עובדים</h4><p>ניהול הרשאות כניסה ושכפול מפתחות מבוקר.</p></div></div>
+        <div class="tab-item"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg><div><h4>אזעקה עם ניטור שוטף</h4><p>מתאים לחנויות, מחסנים ומשרדים.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-tag">איך זה עובד</span>
+        <h2>שלושה שלבים פשוטים</h2>
+      </div>
+    </div>
+    <div class="process-grid">
+      <div class="process-card"><div class="process-num">1</div><h3>יוצרים קשר</h3><p>מתקשרים או שולחים הודעה, מתארים את הבעיה או את הצורך.</p></div>
+      <div class="process-card"><div class="process-num">2</div><h3>קובעים זמן הגעה</h3><p>הערכת מחיר ראשונית בטלפון וזמן הגעה מדויק, כולל קריאות חירום.</p></div>
+      <div class="process-card"><div class="process-num">3</div><h3>העבודה מבוצעת</h3><p>פתרון מקצועי במקום, עם מחיר סופי מוסכם מראש ואחריות בכתב.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div><div class="stat-num">24/7</div><div class="stat-label">זמינות לקריאות חירום</div></div>
+      <div><div class="stat-num">4</div><div class="stat-label">תחומי אבטחה תחת קורת גג אחת</div></div>
+      <div><div class="stat-num">20 דק'</div><div class="stat-label">זמן הגעה ממוצע באזור העיר</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">מחיר מוסכם מראש, בלי הפתעות</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="area">
+  <div class="wrap">
+    <div class="area-wrap">
+      <div>
+        <span class="section-tag">אזור שירות</span>
+        <h2>פעילים בכל באר שבע והנגב</h2>
+        <p class="section-note" style="max-width:44ch;margin-top:10px;">קריאות חירום ותיאומים מראש בכל שכונות העיר וביישובי הסביבה.</p>
+        <div class="area-chips">
+          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>מרכז העיר</div>
+          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>שכונות רמות</div>
+          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>נאות לון</div>
+          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>נווה זאב</div>
+          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>אזור התעשייה הישן והחדש</div>
+          <div class="area-chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>יישובי הסביבה</div>
+        </div>
+      </div>
+      <div class="area-visual">
+        <svg viewBox="0 0 260 220" aria-hidden="true">
+          <circle cx="130" cy="110" r="6" fill="#FF7A3D"/>
+          <circle cx="130" cy="110" r="18" fill="none" stroke="#FF7A3D" stroke-width="1.4" opacity="0.5"/>
+          <circle cx="130" cy="110" r="36" fill="none" stroke="#2FD1C4" stroke-width="1.2" opacity="0.45"/>
+          <circle cx="130" cy="110" r="58" fill="none" stroke="#2FD1C4" stroke-width="1" opacity="0.3"/>
+          <circle cx="130" cy="110" r="82" fill="none" stroke="#2FD1C4" stroke-width="1" opacity="0.18"/>
+          <g fill="#EDF1F5" opacity="0.55">
+            <path d="M78 66l6 10-6 4-6-10z"/>
+            <path d="M182 70l7 8-8 6-6-9z"/>
+            <path d="M60 150l8 8-7 7-8-8z"/>
+            <path d="M190 150l6 9-9 5-6-9z"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-tag">לקוחות מספרים</span>
+        <h2>מה אומרים עלינו</h2>
+      </div>
+      <p class="section-note">חוות דעת לדוגמה מלקוחות פרטיים ועסקיים.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">"ננעלתי בחוץ באמצע הלילה, הגיע תוך זמן קצר ופתר את זה בלי לשבור כלום. מקצועי ורגוע."</p>
+        <div class="testimonial-author">שרון א. <span class="testimonial-tag">בית פרטי</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">"התקין לנו מערכת מצלמות ואזעקה בחנות תוך יום עבודה אחד, כולל הדרכה על האפליקציה. שירות רציני."</p>
+        <div class="testimonial-author">רועי מ. <span class="testimonial-tag">בעל עסק</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">"החליף מנעול רב בריח ונתן המלצה כנה על כספת מתאימה למשרד, בלי לדחוף דברים מיותרים."</p>
+        <div class="testimonial-author">דנה כ. <span class="testimonial-tag">משרד</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section gallery-section" id="gallery">
+  <div class="wrap on-dark">
+    <div class="section-head">
+      <div>
+        <span class="section-tag">עבודות לדוגמה</span>
+        <h2>תחומי עבודה</h2>
+      </div>
+      <p class="section-note">מבחר מסוגי העבודות שמבוצעות באופן שוטף.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-card"><div class="gallery-media"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 12v8M9 17h6"/></svg></div><div class="gallery-caption"><h3>פריצת דלת פלדלת</h3><p>שחזור כניסה ללא נזק, קריאת חירום</p></div></div>
+      <div class="gallery-card"><div class="gallery-media"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><div class="gallery-caption"><h3>החלפת מנעול רב בריח</h3><p>שדרוג אבטחה לדלת כניסה</p></div></div>
+      <div class="gallery-card"><div class="gallery-media"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 9l4-2.5v11L17 15"/></svg></div><div class="gallery-caption"><h3>מערך מצלמות אבטחה</h3><p>התקנה וכיוונון לבית ולעסק</p></div></div>
+      <div class="gallery-card"><div class="gallery-media"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg></div><div class="gallery-caption"><h3>מערכת אזעקה וחיישנים</h3><p>הגנה מלאה מסביב לשעון</p></div></div>
+      <div class="gallery-card"><div class="gallery-media"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M9 4v3M15 4v3"/></svg></div><div class="gallery-caption"><h3>כספות לבית ולעסק</h3><p>ייעוץ, התקנה ופתיחת כספת נעולה</p></div></div>
+      <div class="gallery-card"><div class="gallery-media"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div><div class="gallery-caption"><h3>שכפול מפתחות</h3><p>שכפול מהיר לכל סוגי המפתחות</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="section-tag">שאלות נפוצות</span>
+        <h2>כל מה שרציתם לדעת</h2>
+      </div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q" onclick="toggleFaq(this)">האם אתם זמינים גם בלילה ובסופי שבוע?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><p>כן, המוקד זמין 24/7 לקריאות חירום כמו ננעלת בחוץ או תקלת נעילה דחופה, כולל לילות, שבתות וחגים.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">מעבר למנעולנות, אילו שירותי אבטחה אתם מספקים?<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><p>התקנת מצלמות אבטחה עם צפייה מהנייד, מערכות אזעקה וחיישנים, וכן ייעוץ, מכירה ופתיחה של כספות לבית ולעסק.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">איך נקבע המחיר הסופי?</button>
+        <div class="faq-a"><p>מקבלים הערכת מחיר ראשונית בטלפון, והמחיר הסופי מוסכם איתכם במקום לפני תחילת העבודה — בלי הפתעות.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">האם יש אחריות על ההתקנות?</button>
+        <div class="faq-a"><p>כל עבודה מגיעה עם אחריות בכתב, הן על מנעולים והחלפות והן על התקנות מצלמות ואזעקות.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">אתם עובדים גם עם עסקים וחנויות?</button>
+        <div class="faq-a"><p>בהחלט — ממנעולים ובקרת כניסה ועד מערך מצלמות וכספת עסקית, כולל התאמה לצרכים הספציפיים של העסק.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>ננעלתם? רוצים לשדרג את האבטחה בבית או בעסק?</h2>
+    <p>התקשרו או שלחו הודעה, ונחזור אליכם מיד עם הערכת מחיר ראשונית.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-accent" href="#" onclick="return false;"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>התקשרו עכשיו</a>
+      <button class="btn btn-ghost" onclick="scrollToId('services')">לצפייה במחירון המלא</button>
+    </div>
+    <div class="cta-note">לחצו על כפתור ההתקשרות או הוואטסאפ בפינת המסך ונחזור אליכם מיד</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4 L34 9 V19 C34 28 28 33.5 20 36 C12 33.5 6 28 6 19 V9 Z" fill="#161D27" stroke="url(#gmark2)" stroke-width="2"/><path d="M20 14a4.4 4.4 0 1 0 0 8.8 4.4 4.4 0 0 0 0-8.8Z" fill="none" stroke="#FF9259" stroke-width="2"/><path d="M20 19v6" stroke="#FF9259" stroke-width="2" stroke-linecap="round"/><defs><linearGradient id="gmark2" x1="6" y1="4" x2="34" y2="36"><stop stop-color="#2FD1C4"/><stop offset="1" stop-color="#FF7A3D"/></linearGradient></defs></svg>
+        מגן הנגב
+      </div>
+      <nav class="footer-links">
+        <button onclick="scrollToId('services')">שירותים</button>
+        <button onclick="scrollToId('solutions')">פתרונות אבטחה</button>
+        <button onclick="scrollToId('area')">אזור שירות</button>
+        <button onclick="scrollToId('faq')">שאלות נפוצות</button>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© מגן הנגב — פתרונות אבטחה ונעילה לבית ולעסק</span>
+      <span>אזור שירות: באר שבע והנגב</span>
+    </div>
+  </div>
+</footer>
+
+<div class="float-contacts">
+  <div class="float-btn call" aria-label="התקשרות"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+  <div class="float-btn wa" aria-label="יצירת קשר בוואטסאפ"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.6 14.2c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1.1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.4.5-.2.2-.4.4-.5.6-.2.2-.4.4-.2.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.1.5.1.7-.1.2-.2.8-1 1-1.3.2-.3.4-.3.7-.2.3.1 1.8.8 2.1.9.3.1.5.2.6.3.1.2.1.9-.1 1.5z"/></svg></div>
+</div>
+
+<script>
+  function scrollToId(id){
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
+    document.getElementById('site-header').classList.remove('open');
+  }
+  function toggleFaq(btn){
+    var item = btn.parentElement;
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(el){
+      el.classList.remove('open');
+      el.querySelector('.faq-a').style.maxHeight = null;
+    });
+    if(!wasOpen){
+      item.classList.add('open');
+      var a = item.querySelector('.faq-a');
+      a.style.maxHeight = a.scrollHeight + 'px';
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    var openItem = document.querySelector('.faq-item.open .faq-a');
+    if(openItem){ openItem.style.maxHeight = openItem.scrollHeight + 'px'; }
+
+    var tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        tabBtns.forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+        btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+        document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+        document.querySelector('.tab-panel[data-panel="'+btn.dataset.tab+'"]').classList.add('active');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
